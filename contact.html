@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <header class="header">
   <div class="header-inner">
     <span class="logo" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;">Boat Wraps</span>
@@ -29,7 +28,15 @@
     <p class="lead">Tell us about your boat and we'll get back to you within 24 hours with a no-obligation estimate.</p>
   </section>
 
-  <form style="max-width:560px;display:grid;gap:14px;padding-bottom:48px;" onsubmit="handleSubmit(event)">
+  <!-- STEP 1: Sign up free at formspree.io                          -->
+  <!-- STEP 2: Create a new form — you'll get an ID like "xyzabcde" -->
+  <!-- STEP 3: Replace YOUR_FORM_ID below with that ID               -->
+  <form
+    action="https://formspree.io/f/xlgoalba"
+    method="POST"
+    style="max-width:560px;display:grid;gap:14px;padding-bottom:48px;"
+    id="quoteForm"
+  >
 
     <div class="grid">
       <label style="font-weight:600;font-size:14px;">Your name</label>
@@ -43,7 +50,7 @@
 
     <div class="grid">
       <label style="font-weight:600;font-size:14px;">Phone</label>
-      <input class="input" type="tel" name="phone" placeholder="(555) 000-0000"required>
+      <input class="input" type="tel" name="phone" placeholder="(555) 000-0000" required>
     </div>
 
     <div class="grid">
@@ -65,10 +72,18 @@
       </select>
     </div>
 
+    <!-- Makes the email subject line readable in your inbox -->
+    <input type="hidden" name="_subject" value="New BoatWraps Quote Request">
+
+    <!-- Sends the user back to your contact page with ?sent=1 so the thank-you message shows -->
+    <input type="hidden" name="_next" value="https://radomski13.github.io/BoatWraps/contact.html?sent=1">
 
     <button type="submit" class="cta" style="justify-self:start;border:none;cursor:pointer;font-size:16px;">Send my request</button>
 
-    <p id="formMsg" style="display:none;color:var(--brand-green);font-weight:700;">Thanks! We'll be in touch within 24 hours.</p>
+    <p id="formMsg" style="display:none;color:var(--brand-green);font-weight:700;">
+      Thanks! We'll be in touch within 24 hours.
+    </p>
+
   </form>
 </main>
 
@@ -77,12 +92,12 @@
 </footer>
 
 <script>
-function handleSubmit(e){
-  e.preventDefault();
-  document.getElementById('formMsg').style.display = 'block';
-  e.target.reset();
-}
 (function () {
+  // Show success message if Formspree redirected back with ?sent=1
+  if (window.location.search.includes('sent=1')) {
+    document.getElementById('formMsg').style.display = 'block';
+  }
+
   var path = (location.pathname.split('/').pop() || 'index.html').split('?')[0].split('#')[0].toLowerCase();
   document.querySelectorAll('.nav a').forEach(function (a) {
     var href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
