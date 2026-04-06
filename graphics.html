@@ -6,13 +6,72 @@
   <title>Boat Graphics — Boat Wraps</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    #estimateFrame{
-      width:100%; height:720px;
-      border:0; display:block; overflow:hidden;
+    .gallery-hub {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 32px 0 48px;
     }
-    @media (max-width:1200px){ #estimateFrame{ height:760px !important; } }
-    @media (max-width:900px){  #estimateFrame{ height:820px !important; } }
-    @media (max-width:600px){  #estimateFrame{ height:900px !important; } }
+
+    @media (max-width: 600px) {
+      .gallery-hub { grid-template-columns: 1fr; }
+    }
+
+    .hub-card {
+      display: block;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+      color: var(--ink);
+    }
+
+    .hub-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+      border-color: var(--brand-green);
+    }
+
+    .hub-card .count {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .hub-card:hover .count {
+      background: var(--brand-green);
+      color: #000;
+    }
+
+    .hub-card h2 {
+      font-size: 20px;
+      font-weight: 900;
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
+
+    .hub-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .hub-card .arrow {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand-green);
+      letter-spacing: 0.3px;
+    }
   </style>
 </head>
 <body>
@@ -40,35 +99,35 @@
 
   <div class="gallery-hub">
 
-    <a class="hub-card" href="image-gallery.html">
+    <a class="hub-card" href="/offshore/index.html">
       <span class="count">57 designs</span>
       <h2>Offshore</h2>
       <p>Big game wraps — marlin, billfish, tuna, mako, wahoo, and more. Built for tournament boats and serious offshore rigs.</p>
       <span class="arrow">Browse offshore →</span>
     </a>
 
-    <a class="hub-card" href="image-gallery-inshore.html">
+    <a class="hub-card" href="/inshore/index.html">
       <span class="count">39 designs</span>
       <h2>Inshore &amp; Reef</h2>
       <p>Kingfish, snapper, GT, squid, permit, and reef species. Perfect for centre consoles and inshore fishing boats.</p>
       <span class="arrow">Browse inshore →</span>
     </a>
 
-    <a class="hub-card" href="image-gallery-freshwater.html">
+    <a class="hub-card" href="/rivers/index.html">
       <span class="count">46 designs</span>
       <h2>Freshwater &amp; Estuary</h2>
       <p>Barramundi, Murray cod, bream, bass, flathead, and estuary species. For the rivers, lakes, and flats.</p>
       <span class="arrow">Browse freshwater →</span>
     </a>
 
-    <a class="hub-card" href="image-gallery-designs.html">
+    <a class="hub-card" href="/skincamo/index.html">
       <span class="count">52 designs</span>
       <h2>Patterns &amp; Textures</h2>
       <p>Camo, scales, carbon, topographic, hexy, reptile, and more. Bold backgrounds that work on any hull.</p>
       <span class="arrow">Browse patterns →</span>
     </a>
 
-    <a class="hub-card" href="image-gallery-lineart.html">
+    <a class="hub-card" href="/lineart/index.html">
       <span class="count">25 designs</span>
       <h2>Line Art</h2>
       <p>GT, barramundi, kingfish, and muddie in clean illustrated line art styles. Subtle, sharp, and timeless.</p>
