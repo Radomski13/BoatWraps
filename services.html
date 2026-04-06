@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — BoatWraps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <span class="logo" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;">BoatWraps</span>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="cta" href="contact.html">Get a quote</a>
+  </div>
+</header>
+
+<main class="section">
+  <section class="hero">
+    <h1>Our <em>Services</em></h1>
+    <p class="lead">Everything you need to make your boat stand out on the water.</p>
+  </section>
+
+  <section class="services" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:24px 0;">
+
+    <div style="border:1px solid var(--border);border-radius:16px;padding:24px;">
+      <h3 style="margin:0 0 8px;">Full Hull Wraps</h3>
+      <p style="color:#444;margin:0;">Complete bow-to-stern vinyl coverage. UV-stable, saltwater-resistant, and precision-cut to your hull's exact dimensions.</p>
+    </div>
+
+    <div style="border:1px solid var(--border);border-radius:16px;padding:24px;">
+      <h3 style="margin:0 0 8px;">Partial Wraps</h3>
+      <p style="color:#444;margin:0;">Maximum visual impact, targeted application. Accent graphics, stripe kits, or side panels — designed to complement your boat's lines.</p>
+    </div>
+
+    <div style="border:1px solid var(--border);border-radius:16px;padding:24px;">
+      <h3 style="margin:0 0 8px;">Fleet Branding</h3>
+      <p style="color:#444;margin:0;">Consistent, professional identity across every vessel in your charter, rental, or commercial fleet.</p>
+    </div>
+
+    <div style="border:1px solid var(--border);border-radius:16px;padding:24px;">
+      <h3 style="margin:0 0 8px;">Custom Lettering</h3>
+      <p style="color:#444;margin:0;">Vessel name, hailing port, and registration numbers cut from premium cast vinyl. Classic or bold — your choice.</p>
+    </div>
+
+    <div style="border:1px solid var(--border);border-radius:16px;padding:24px;">
+      <h3 style="margin:0 0 8px;">Sponsor Graphics</h3>
+      <p style="color:#444;margin:0;">Tournament and racing boats get maximum sponsor visibility. High-contrast layouts engineered for photography and speed.</p>
+    </div>
+
+    <div style="border:1px solid var(--border);border-radius:16px;padding:24px;">
+      <h3 style="margin:0 0 8px;">Removal & Refresh</h3>
+      <p style="color:#444;margin:0;">Safe, residue-free removal of old wraps without damaging gelcoat. Ready for a fresh install or a clean hull.</p>
+    </div>
+
+  </section>
+
+  <p style="margin-top:24px;">
+    <a class="cta" href="contact.html">Get a quote for your boat</a>
+  </p>
+</main>
+
+<footer class="footer">
+  © <script>document.write(new Date().getFullYear())</script> BoatWraps
+</footer>
+
+<script>
+(function () {
+  var path = (location.pathname.split('/').pop() || 'index.html').split('?')[0].split('#')[0].toLowerCase();
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
+    if (href === path || (path === '' && href === 'index.html')) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

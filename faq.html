@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — BoatWraps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <span class="logo" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;">BoatWraps</span>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="cta" href="contact.html">Get a quote</a>
+  </div>
+</header>
+
+<main class="section">
+  <section class="hero">
+    <h1>Frequently Asked <em>Questions</em></h1>
+    <p class="lead">Everything you need to know about getting your boat wrapped.</p>
+  </section>
+
+  <div style="max-width:720px;padding-bottom:48px;">
+
+    <div class="faq-item">
+      <button class="faq-question">How long does a boat wrap last?</button>
+      <div class="faq-answer"><p>With proper care, a marine-grade vinyl wrap typically lasts 5–7 years. Rinsing with fresh water after saltwater use and avoiding pressure washing directly on edges will maximize lifespan.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Will the wrap damage my gelcoat?</button>
+      <div class="faq-answer"><p>No — when installed and removed correctly, vinyl wraps protect gelcoat rather than damage it. We use professional-grade cast vinyl and removal techniques that leave your hull pristine.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How long does installation take?</button>
+      <div class="faq-answer"><p>Most single vessels are completed in one day. Larger yachts or multi-vessel fleet jobs may take 2–3 days. We'll give you a firm timeline with your quote.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Do you come to my marina?</button>
+      <div class="faq-answer"><p>Yes. We offer mobile installation and can work at your marina, boatyard, or dry storage facility. We handle the logistics — you just show up to the reveal.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can I wrap a boat that's already been painted?</button>
+      <div class="faq-answer"><p>In most cases, yes. We'll inspect the surface condition during consultation. As long as the paint is well-adhered with no peeling or bubbling, vinyl wraps adhere cleanly over painted hulls.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">What's included in the price?</button>
+      <div class="faq-answer"><p>Every quote includes design, print, laminate, and installation. There are no hidden fees — the number we give you is the number you pay.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How do I get started?</button>
+      <div class="faq-answer"><p>Hit the "Get a quote" button, fill in your boat details, and we'll be in touch within 24 hours with a no-obligation estimate.</p></div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  © <script>document.write(new Date().getFullYear())</script> BoatWraps
+</footer>
+
+<script>
+(function () {
+  var path = (location.pathname.split('/').pop() || 'index.html').split('?')[0].split('#')[0].toLowerCase();
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
+    if (href === path || (path === '' && href === 'index.html')) a.classList.add('active');
+  });
+
+  document.querySelectorAll('.faq-question').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var answer = this.nextElementSibling;
+      var isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+      document.querySelectorAll('.faq-answer').forEach(function(a){ a.style.maxHeight = '0px'; });
+      document.querySelectorAll('.faq-question').forEach(function(b){ b.classList.remove('active'); });
+      if(!isOpen){
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        this.classList.add('active');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

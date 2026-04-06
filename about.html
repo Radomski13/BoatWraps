@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — BoatWraps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <span class="logo" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;">BoatWraps</span>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="cta" href="contact.html">Get a quote</a>
+  </div>
+</header>
+
+<main class="section">
+  <section class="hero">
+    <h1>About <em>BoatWraps</em></h1>
+    <p class="lead">We're a marine vinyl wrap studio obsessed with making boats impossible to ignore. From single vessel name graphics to full fleet rebrands, we deliver precision installs built to survive salt, sun, and speed.</p>
+  </section>
+
+  <section style="padding:24px 0;max-width:70ch;">
+    <h2>Our story</h2>
+    <p>BoatWraps was founded by a team of marine enthusiasts and professional wrap installers who saw a gap: fleet-quality vinyl work, done right, for boat owners of every kind. We combine commercial-grade materials with meticulous installation to give your vessel a finish that lasts season after season.</p>
+
+    <h2 style="margin-top:32px;">Why us</h2>
+    <ul style="padding-left:20px;line-height:2;">
+      <li>Marine-specific vinyl rated for UV, saltwater, and constant sun exposure</li>
+      <li>In-house design team — no outsourcing, no delays</li>
+      <li>Mobile installation — we come to your marina or storage facility</li>
+      <li>Hundreds of successful installs across fishing boats, yachts, pontoons, and commercial fleets</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer">
+  © <script>document.write(new Date().getFullYear())</script> BoatWraps
+</footer>
+
+<script>
+(function () {
+  var path = (location.pathname.split('/').pop() || 'index.html').split('?')[0].split('#')[0].toLowerCase();
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
+    if (href === path || (path === '' && href === 'index.html')) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

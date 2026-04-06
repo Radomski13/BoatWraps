@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote — BoatWraps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <span class="logo" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;">BoatWraps</span>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="cta" href="contact.html">Get a quote</a>
+  </div>
+</header>
+
+<main class="section">
+  <section class="hero">
+    <h1>Get a <em>Quote</em></h1>
+    <p class="lead">Tell us about your boat and we'll get back to you within 24 hours with a no-obligation estimate.</p>
+  </section>
+
+  <form style="max-width:560px;display:grid;gap:14px;padding-bottom:48px;" onsubmit="handleSubmit(event)">
+
+    <div class="grid">
+      <label style="font-weight:600;font-size:14px;">Your name</label>
+      <input class="input" type="text" name="name" placeholder="Captain's name" required>
+    </div>
+
+    <div class="grid">
+      <label style="font-weight:600;font-size:14px;">Email</label>
+      <input class="input" type="email" name="email" placeholder="you@example.com" required>
+    </div>
+
+    <div class="grid">
+      <label style="font-weight:600;font-size:14px;">Phone (optional)</label>
+      <input class="input" type="tel" name="phone" placeholder="(555) 000-0000">
+    </div>
+
+    <div class="grid">
+      <label style="font-weight:600;font-size:14px;">Boat type</label>
+      <select class="input" name="boat_type">
+        <option value="">Select type…</option>
+        <option>Fishing boat</option>
+        <option>Pontoon</option>
+        <option>Bowrider / runabout</option>
+        <option>Center console</option>
+        <option>Sailboat</option>
+        <option>Yacht / cruiser</option>
+        <option>Commercial / fleet vessel</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="grid">
+      <label style="font-weight:600;font-size:14px;">Boat length (ft)</label>
+      <input class="input" type="number" name="length" placeholder="e.g. 24" min="8" max="200">
+    </div>
+
+    <div class="grid">
+      <label style="font-weight:600;font-size:14px;">Service needed</label>
+      <select class="input" name="service">
+        <option value="">Select service…</option>
+        <option>Full hull wrap</option>
+        <option>Partial wrap / accent graphics</option>
+        <option>Vessel lettering</option>
+        <option>Fleet branding</option>
+        <option>Sponsor graphics</option>
+        <option>Wrap removal</option>
+        <option>Not sure — need advice</option>
+      </select>
+    </div>
+
+    <div class="grid">
+      <label style="font-weight:600;font-size:14px;">Additional details</label>
+      <textarea class="input" name="message" rows="4" placeholder="Tell us about your project, timeline, or any specific design ideas…"></textarea>
+    </div>
+
+    <button type="submit" class="cta" style="justify-self:start;border:none;cursor:pointer;font-size:16px;">Send my request</button>
+
+    <p id="formMsg" style="display:none;color:var(--brand-green);font-weight:700;">Thanks! We'll be in touch within 24 hours.</p>
+  </form>
+</main>
+
+<footer class="footer">
+  © <script>document.write(new Date().getFullYear())</script> BoatWraps
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('formMsg').style.display = 'block';
+  e.target.reset();
+}
+(function () {
+  var path = (location.pathname.split('/').pop() || 'index.html').split('?')[0].split('#')[0].toLowerCase();
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
+    if (href === path || (path === '' && href === 'index.html')) a.classList.add('active');
+  });
+  if (path === 'contact.html') {
+    var cta = document.querySelector('.header .cta');
+    if (cta) cta.classList.add('active');
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — BoatWraps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <span class="logo" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;">BoatWraps</span>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="cta" href="contact.html">Get a quote</a>
+  </div>
+</header>
+
+<main class="section">
+  <section class="hero">
+    <h1>Recent <em>Installs</em></h1>
+    <p class="lead">A look at some of our recent boat wrap projects.</p>
+  </section>
+
+  <div class="gallery" style="padding:24px 0;">
+    <div style="border:1px solid var(--border);border-radius:12px;padding:48px 24px;text-align:center;color:var(--muted);">Photo coming soon</div>
+    <div style="border:1px solid var(--border);border-radius:12px;padding:48px 24px;text-align:center;color:var(--muted);">Photo coming soon</div>
+    <div style="border:1px solid var(--border);border-radius:12px;padding:48px 24px;text-align:center;color:var(--muted);">Photo coming soon</div>
+    <div style="border:1px solid var(--border);border-radius:12px;padding:48px 24px;text-align:center;color:var(--muted);">Photo coming soon</div>
+    <div style="border:1px solid var(--border);border-radius:12px;padding:48px 24px;text-align:center;color:var(--muted);">Photo coming soon</div>
+    <div style="border:1px solid var(--border);border-radius:12px;padding:48px 24px;text-align:center;color:var(--muted);">Photo coming soon</div>
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<footer class="footer">
+  © <script>document.write(new Date().getFullYear())</script> BoatWraps
+</footer>
+
+<script>
+(function () {
+  var path = (location.pathname.split('/').pop() || 'index.html').split('?')[0].split('#')[0].toLowerCase();
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
+    if (href === path || (path === '' && href === 'index.html')) a.classList.add('active');
+  });
+
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('.gl-thumb').forEach(function(img){
+    img.addEventListener('click', function(){
+      lbImg.src = img.src;
+      lb.classList.add('open');
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', function(){ lb.classList.remove('open'); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) lb.classList.remove('open'); });
+})();
+</script>
+</body>
+</html>
