@@ -3,69 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Florida Boat Wraps That Turn Heads, <em>Not Just Wakes.</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Wrap Designs — BoatWraps</title>
   <style>
-    #estimateFrame{
-      width:100%; height:720px;
-      border:0; display:block; overflow:hidden;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #fff;
+      color: #0a0a0a;
+      padding: 32px 24px;
     }
-    @media (max-width:1200px){ #estimateFrame{ height:760px !important; } }
-    @media (max-width:900px){  #estimateFrame{ height:820px !important; } }
-    @media (max-width:600px){  #estimateFrame{ height:900px !important; } }
+
+    h1 { font-size: 28px; font-weight: 900; margin-bottom: 8px; }
+    h1 span { color: #39ff14; }
+
+    p.sub { color: #6b7280; margin-bottom: 32px; font-size: 15px; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: 1fr; }
+    }
+
+    .gallery-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .gallery-item:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-item img { height: 220px; }
+    }
+
+    .caption {
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+      border-top: 1px solid #e5e7eb;
+      background: #fff;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 999;
+      padding: 24px;
+    }
+
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+
+    .lightbox img {
+      max-width: min(96vw, 1200px);
+      max-height: 88vh;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 16px; right: 18px;
+      background: #000; color: #fff;
+      border: none; border-radius: 10px;
+      padding: 8px 14px; font-size: 26px;
+      line-height: 1; cursor: pointer;
+    }
+
+    .lb-close:hover { background: #39ff14; color: #000; }
   </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="header-inner">
-    <span class="logo" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;">Boat Wraps</span>
-    <p>Servicing Tampa, Clearwater & St Petersburg</p>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
-    <a class="cta" href="contact.html">Get a quote</a>
+  <h1>Boat<span>Wraps</span> Designs</h1>
+  <p class="sub">Florida Boat Wraps That Turn Heads, Not Just Wakes.</p>
+
+  <div class="gallery" id="gallery"></div>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose">&times;</button>
+    <img id="lbImg" src="" alt="">
   </div>
-</header>
 
-<main class="section">
-  <section class="hero">
-    <h1>Florida Boat Wraps That Turn Heads, <em>Not Just Wakes.</em></h1>
-    <p class="lead">We don't just make boats seen — we set the standard for how brands command the water.</p>
-    <p>
-      <a class="cta" href="contact.html">Start with an estimate</a>
-      <a class="cta ghost" href="gallery.html" style="background:transparent;border:2px solid #000;color:#000;margin-left:10px;">See recent installs</a>
-    </p>
-  </section>
+  <script>
+    const images = [
+      "Abalone-Natural-boat-wraps.jpg",
+      "Abalone-Pink-boat-wraps.jpg",
+      "Blue-Ice-boat-wraps.jpg",
+      "Digital-Mangrove-Purple-boat-wraps.jpg",
+      "Hexy-Blue-boat-wraps.jpg",
+      "Hexy-Grey-boat-wraps.jpg",
+      "Hexy-Pale-Grey-boat-wraps.jpg",
+      "Hexy-Red-boat-wraps.jpg",
+      "Ice-Grey-boat-wraps.jpg",
+      "Ice-Pink-boat-wraps.jpg",
+      "Mottled-Camo-Blue-boat-wraps.jpg",
+      "Mottled-Camo-Green-boat-wraps-1.jpg",
+      "Mottled-Camo-Grey-boat-wraps.jpg",
+      "Mottled-Camo-Muted-Blue-boat-wraps.jpg",
+      "Mottled-Camo-Red-boat-wraps.jpg",
+      "Mottled-Camo-White-and-Green-boat-wraps.jpg",
+      "Neon-Scales-Black-and-Blue-boat-wraps.jpg",
+      "Neon-Scales-Blue-boat-wraps.jpg",
+      "Reptile-Blue-boat-wraps.jpg",
+      "Reptile-Dark-Blue-boat-wraps.jpg",
+      "Scales-Black-and-White-boat-wraps.jpg",
+      "Scales-Lagoon-boat-wraps.jpg",
+      "Scales-Pearl-boat-wraps.jpg",
+      "Scales-White-boat-wraps.jpg",
+      "Shards-Blue-and-Red-boat-wraps.jpg",
+      "Shards-Blue-boat-wraps.jpg",
+      "Smashed-Camo-Blue-boat-wraps.jpg",
+      "Snags-Dark-Grey-boat-wraps.jpg",
+      "Techno-Blue-boat-wraps.jpg",
+      "Topographic-Aluminum-boat-wraps.jpg",
+      "Topographic-Blue-Grey-boat-wraps.jpg",
+      "Topographic-Camo-Grey-boat-wraps.jpg",
+      "Topographic-Dark-Grey-boat-wraps.jpg",
+      "Topographic-Pink-and-Purple-boat-wraps.jpg",
+      "Topographic-Purple-boat-wraps.jpg",
+      "Wild-Style-Blue-boat-wraps.jpg",
+      "Wild-Style-Lagoon-boat-wraps.jpg",
+      "Wild-Style-Midnight-boat-wraps.jpg",
+      "Wild-Style-Red-and-Blue-boat-wraps.jpg",
+      "Wild-Style-Red-and-Purple-boat-wraps.jpg",
+      "Wind-Blue-Green-boat-wraps.jpg",
+      "reef-blue-boat-wraps.jpg",
+      "wind-green-boat-wraps.jpg",
+      "brochure-stock-background-.png",
+      "brochure-stock-background-barra-scale-.png",
+      "brochure-stock-background-carbon-skin-.png",
+      "brochure-stock-background-coral-water.png",
+      "brochure-stock-background-crock-.png",
+      "brochure-stock-background-king-carbon-.png",
+      "brochure-stock-background-spiral-blue.png",
+      "brochure-stock-background-spiral-grey.png",
+      "brochure-stock-background-water.png",
+    ];
 
-  <section class="estimate-wrap">
-    <iframe id="estimateFrame" src="boatwraps_price_slider_estimate.html" scrolling="no"></iframe>
-  </section>
-</main>
-
-<footer class="footer">
-  © <script>document.write(new Date().getFullYear())</script> BoatWraps
-</footer>
-
-<script>
-(function () {
-  var path = (location.pathname.split('/').pop() || 'index.html')
-    .split('?')[0].split('#')[0].toLowerCase();
-  document.querySelectorAll('.nav a').forEach(function (a) {
-    var href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
-    if (href === path || (path === '' && href === 'index.html')) {
-      a.classList.add('active');
+    function fileToTitle(filename) {
+      return filename
+        .replace(/\.[^/.]+$/, '')
+        .replace(/[-_]+/g, ' ')
+        .replace(/\b(boat wraps?)\b/gi, '')
+        .replace(/\bbrochure stock background\b/gi, '')
+        .replace(/\bbrochure stock\b/gi, '')
+        .replace(/\s*\d+\s*$/, '')
+        .replace(/\s{2,}/g, ' ')
+        .trim()
+        .replace(/\b\w/g, c => c.toUpperCase());
     }
-  });
-  if (path === 'contact.html') {
-    var cta = document.querySelector('.cta');
-    if (cta) cta.classList.add('active');
-  }
-})();
-</script>
+
+    const gallery = document.getElementById('gallery');
+
+    images.forEach(function(filename) {
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+
+      const img = document.createElement('img');
+      img.src = filename;
+      img.alt = fileToTitle(filename);
+      img.loading = 'lazy';
+      img.addEventListener('click', function() { openLightbox(filename); });
+
+      const caption = document.createElement('div');
+      caption.className = 'caption';
+      caption.textContent = fileToTitle(filename);
+
+      item.appendChild(img);
+      item.appendChild(caption);
+      gallery.appendChild(item);
+    });
+
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    function openLightbox(src) {
+      lbImg.src = src;
+      lb.classList.add('open');
+    }
+
+    lbClose.addEventListener('click', function() { lb.classList.remove('open'); });
+    lb.addEventListener('click', function(e) { if (e.target === lb) lb.classList.remove('open'); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') lb.classList.remove('open'); });
+  </script>
+
 </body>
 </html>
